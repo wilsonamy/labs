@@ -1,0 +1,159 @@
+---
+title: "Lab 00 - Hello IDS!"
+output: 
+  tufte::tufte_html:
+    css: ../lab.css
+    highlight: pygments
+link-citations: yes
+editor_options:
+  markdown:
+    wrap: sentence
+    canonical: true
+---
+
+Below are the tasks we will be working through in today's workshop.
+The primary goal in all of this is to form your teams for the class, check you are all setup for the course, and to have a practice with some of the core technology we will be using.
+If you do not get through all of the Lab work today, this is not an issue.
+
+```{marginfigure}
+**Example:** You turn up to the workshop and after introducing yourself, your tutor will tell you that you are allocated to group 12. After a brief introduction you will then be asked to form a smaller team of 3 or 4 students with other students in your group.
+```
+
+Each workshop session will start with a brief introduction in the "big group" and then you will work in your teams for the rest of the workshop.
+Who you can form a team with will depend on your pre-allocated group number.
+These groups are a little big for the purposes of the class (they are around 12 students), so we will ask you to form smaller subteams (\~3-4 students).
+You are free to form a team with whoever you like as long as they are in the same group as you.
+You can switch teams between labs or stay in the same team for the entire semester.
+
+1.  Take turns to introduce yourself to your team (e.g. your name, where you studied previously, what degree programme you are taking, etc.).
+    Tell the rest of your team a boring fact about yourself.
+    (For example, "I had cornflakes for breakfast this morning.")
+
+2.  Decide on a team name.
+    Feel free to be creative with the name (provided its not offensive or inappropriate).
+
+```{marginfigure}
+**Note:** Each participant in the team needs to have completed the "first time setup" to be able to do the rest of the workshop.
+    Team members who have already got themselves set up can move on and include the remaining members once they are ready. Please help others in your team set up their tools. 
+```
+
+3.  Before the session, you should have set up accounts on:
+
+    -   GitHub
+    -   Piazza
+
+    If you haven't done this, please open your GitHub account now.
+    Your can set up a Piazza account later.
+    Instructions on how to do this can be found on the [Setup & Troubleshooting](https://ids2022.netlify.app/troubleshoot/) page on the course website.
+
+4.  We will use RStudio for the coding in this course.
+    You will need to download and install various pieces of software to get this to work.
+    Please follow the instructions on the [RStudio setup](https://ids2022.netlify.app/troubleshoot/rstudio/) page on the course website.
+
+5.  You will then need to download and install Git and link this to your GitHub account and to RStudio.
+    To do this, follow the instructions on the [GitHub setup](https://ids2022.netlify.app/troubleshoot/github/) page on the course website.
+
+    If you encounter any issues with any of these steps you can ask for help by raising your hand.
+    If anyone in your team has successfully completed the set up procedure, please ask them for help too!
+
+We're now going to set up an RStudio project using files already stored on GitHub.
+Every member of the team who has already completed Exercise 5, should perform the following.
+
+Check how to copy github repo (fork?).
+
+4.  Find your team repository on the course's GitHub organisation page (<https://github.com/ids-s1-21>). For this week, each group should have a team number (e.g. group\_\<number\>\_\<number\>) assigned by the tutor, so your repository will look like lab-00-hello-ids-group\_\<number\>\_\<number\>. You should be able to see this on the GitHub organisation page (<https://github.com/ids-s1-21>), or you could search it in the "find a repository" search bar. Copy the web address for the repository from your web browsers address bar.
+
+```{marginfigure}
+**Note:** If you need more detailed instructions with images, follow steps 1 to 4 on the [Opening a Project](https://idsed.digital/troubleshoot/setup/openingaproject/) troubleshooting page.
+```
+
+5.  Now we need to set up an RStudio Cloud project for the lab by **cloning** the a repository.
+    Go to [RStudio Cloud](https://rstudio.cloud/), navigate to the "IDS 2021" space, click "New Project", "New Project from Git Repository", and then paste the address of the GitHub repository.
+
+6.  We now need to set up the RStudio Cloud project so it can push and pull changes to and from the GitHub repository.
+    To do this, follow steps 5-17 of the [Opening a Project](https://idsed.digital/troubleshoot/setup/openingaproject/) troubleshooting page.
+
+```{marginfigure}
+**Note:** We recommend you do this setup in future weeks (week 2+) before coming to class so you can start working on R code with your teammates quicker.
+```
+
+If you have managed all that **congratulations**!
+This setup will become easier each week and you only need to do it for each project/repository once.
+
+Now we are finally ready to start learning R!
+Don't worry today if you don't understand what every line of code does---the purpose of this workshop is to give you experience working with RStudio Cloud.
+Lets start by making a data frame.
+Normally we'll load these from outside R, but you can also create them within R as well, using a function called "`tibble`".
+This isn't something you'll want to do except for really simple data frames---like the one we're about to make!
+
+The data frame we'll make will contain four variables: the GitHub username of each member of the team, the outcome of rolling a die for each member, and a colour for each member, and a hobby.
+We're going to fill in the data frame with some information.
+
+The entries for the first column, for one of your course organisers (David), are already filled in for you.
+Leave these in place.
+
+7.  Decide in what order you will work on the task (i.e. who is going first, second, third).
+
+Now, **in turn**, each member of the team should perform the following.
+
+```{marginfigure}
+**Note:** If you are the first member of the group to work on the repository, then this will not change anything (because you haven't changed anything yet).
+```
+
+8.  Add your GitHub username into the first unused space in the `usernames` vector (i.e. the first person replaces the text `username 1`, the second person replaces the text `username 2`, and the third person replaces the text `username 3`; if you have four or more people on your team the fourth person will have to add a completely new entry to the vector).
+
+```{r die, echo = FALSE, fig.margin = T}
+knitr::include_graphics("img/d20.jpg")
+```
+
+9.  Roll a 20-sided die.
+    You can do this within R by typing `sample(20, 1)` into the console (or just roll a die, if you happen to have one with you)!
+    Enter the result into the `nums` vector, replacing the next `NA` (or extending the vector, if you are the fourth or later member of your team).
+    **Do not** enclose it in quotes!
+
+10. Pick a colour, and enter it into the `colours` vector, like you did with your username.
+    If you want to see a list of available colours, type `colours()` (or `colors()`) into the console, and press Enter.
+
+11. Put one of your hobbies in the `hobbies` vector, like you did with your username.
+    This can be anything you like, but make sure it has quotes around it!
+
+```{marginfigure}
+**WARNING:** Don't click the button that says: "Amend previous commits" - it can cause some errors!
+```
+
+12. **Commit** your changes by pressing commit and ticking all the boxes on the left, type your message in the box, and then press **commit**. Now **Pull** again (in case anyone has made changes since the last time you pulled---they shouldn't have if you have been taking turns!), and **push**, using the Git tab at the top-right.
+
+```{marginfigure}
+**Note:** If others have been changing the code too you will run into a "merge conflict". This will add a bunch of stuff to your code. See here for how to fix it: https://stackoverflow.com/questions/10657315/git-merge-left-head-marks-in-my-files and ask your tutor :)
+```
+
+If everyone in the team has completed Exercises 4--9, move on to the next exercise.
+Otherwise, the next member of your team should go back to Exercise 4.
+
+13. "Uncomment" the three lines that look like the code below (that is, remove the `#` symbol from the beginning, so that R knows to run them as lines of code). Then press the "Knit" button. You should see that a plot has appeared in your R Markdown document, just after the code.
+
+```{r colplot, echo = T}
+# p <- ggplot(team_data, aes(x = username, y = die_roll)) +
+#   geom_col(fill = team_data$colour)
+# p
+```
+
+14. What does the plot show?
+    Type your answer into the space provided in your team's R Markdown document.
+
+15. Uncomment the code corresponding to this exercise, and press the "Knit" button.
+    What's changed about this plot?
+
+16. Replace `Insert text here` each time it appears with sensible choices of text.
+    Press the "Knit" button.
+
+17. Have a look at the plot on the knitted R Markdown document for "Exercise 16".
+    (Re-knit the document if you need to.) This plot probably isn't a good data visualisation, unless one of your team also has drumming as a hobby.
+    In fact, suppose you had a data frame that extended to everyone taking this course.
+    The data visualisation produced by this method would probably be even worse at conveying information.
+    Why?
+    Can you think of any way to display these data nicely?
+    (You do not need to write code to do this!)
+
+That's the end of this lab!
+Remember, this lab isn't marked, so if you did not reach the end you don't have to worry about it.
